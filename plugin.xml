@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="org.onepf.openiab"
+        version="0.0.1">
+
+    <name>OpenIAB</name>
+    <description>Cordova OpenIAB Plugin</description>
+    <author>One Platform Foundation</author>
+    <license>Apache 2.0</license>
+    <keywords>cordova, billing, android, openiab, inapp</keywords>
+   
+    <platform name="android">
+
+        <js-module src="www/openiab.js" name="openiab">
+            <clobbers target="openiab" />
+        </js-module>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="OpenIabCordovaPlugin">
+                <param name="android-package" value="org.onepf.openiab.cordova.OpenIabCordovaPlugin"/>
+            </feature>
+        </config-file>
+       
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!--all-->
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <!--Google Play-->
+            <uses-permission android:name="com.android.vending.BILLING" />
+            <!--Open Store-->
+            <uses-permission android:name="org.onepf.openiab.permission.BILLING" />
+            <!--Amazon requires no permissions -->
+            <!--Samsung Apps-->
+            <uses-permission android:name="com.sec.android.iap.permission.BILLING" />
+            <!--Nokia-->
+            <uses-permission android:name="com.nokia.payment.BILLING"/>
+            <!--SlideME-->
+            <uses-permission android:name="com.slideme.sam.manager.inapp.permission.BILLING" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="com.amazon.inapp.purchasing.ResponseReceiver">
+                <intent-filter>
+                    <action
+                        android:name="com.amazon.inapp.purchasing.NOTIFY"
+                        android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY"/>
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+        <!-- It's a pity, but all source files should be listed here -->
+        <source-file src="android/src/OpenIabCordovaPlugin.java" target-dir="src/org/onepf/openiab/cordova" />
+        <source-file src="android/src/Serialization.java" target-dir="src/org/onepf/openiab/cordova" />
+
+        <!-- Libraries -->
+        <source-file src="android/libs/OpenIAB.jar" target-dir="libs" />
+        <source-file src="android/libs/in-app-purchasing-1.0.3.jar" target-dir="libs" />
+        <source-file src="android/libs/FortumoInApp-android-9.1.2-o.jar" target-dir="libs" />        
+
+    </platform>
+</plugin>
