@@ -1,4 +1,4 @@
-OpenIAB-Cordodva-Plugin
+OpenIAB-Cordova-Plugin
 =======================
 
 under development
