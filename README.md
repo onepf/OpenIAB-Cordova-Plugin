@@ -25,3 +25,12 @@ $ cordova build
 ```
 $ cordova run android
 ```
+
+Intel XDK Integration
+---------------------
+
+![Import plugin](http://take.ms/Fc5Aa)
+
+![Import settings](http://take.ms/JGni6)
+
+![Import settings](http://take.ms/mluph)
