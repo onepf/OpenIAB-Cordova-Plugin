@@ -44,6 +44,7 @@ public class OpenIabCordovaPlugin extends CordovaPlugin
             int checkInventoryTimeout = j.getInt("checkInventoryTimeout");
             int discoveryTimeout = j.getInt("discoveryTimeout");
             int verifyMode = j.getInt("verifyMode");
+            int storeSearchStrategy = j.getInt("storeSearchStrategy");
 
             OpenIabHelper.Options.Builder builder = new OpenIabHelper.Options.Builder()
                     .setCheckInventory(checkInventory)
@@ -51,17 +52,24 @@ public class OpenIabCordovaPlugin extends CordovaPlugin
                     .setDiscoveryTimeout(discoveryTimeout)
                     .setVerifyMode(verifyMode);
 
-            JSONArray availableStores = j.getJSONArray("availableStores");
-            for (int i = 0; i < availableStores.length(); ++i) {
-                JSONArray pair = availableStores.getJSONArray(i);
+            builder.setStoreSearchStrategy(storeSearchStrategy);
+                    
+            JSONArray storeKeys = j.getJSONArray("storeKeys");
+            for (int i = 0; i < storeKeys.length(); ++i) {
+                JSONArray pair = storeKeys.getJSONArray(i);
                 builder.addStoreKey(pair.get(0).toString(), pair.get(1).toString());
             }
-
+            
             JSONArray prefferedStoreNames = j.getJSONArray("preferredStoreNames");
             for (int i = 0; i < prefferedStoreNames.length(); ++i) {
                 builder.addPreferredStoreName(prefferedStoreNames.get(i).toString());
             }
 
+            JSONArray availableStoreNames = j.getJSONArray("availableStoreNames");
+            for (int i = 0; i < availableStoreNames.length(); ++i) {
+                builder.addAvailableStoreNames(availableStoreNames.get(i).toString());
+            }
+            
             List<String> skuList = new ArrayList<String>();
             if (args.length() > 1) {
                 JSONArray jSkuList = args.getJSONArray(1);

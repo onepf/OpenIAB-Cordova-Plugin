@@ -20,18 +20,32 @@ function OpenIAB()
 	    NOKIA:"com.nokia.nstore",
 	    APPLAND:"Appland",
 	    SLIDEME:"SlideME",
-	    APTOIDE:"cm.aptoide.pt"
-	}
+	    APTOIDE:"cm.aptoide.pt",
+        NAME_FORTUMO:"com.fortumo.billing",
+        NAME_SKUBIT:"com.skubit.android",
+        NAME_SKUBIT_TEST:"net.skubit.android"
+    }
 
+    this.STORE_SEARCH_STRATEGY =
+    {
+        INSTALLER: 0,
+        BEST_FIT: 1,
+        INSTALLER_THEN_BEST_FIT: 2
+    }
+    
 	this.options = 
 	{
 		checkInventory:false,
 		discoveryTimeout:5 * 1000,
 		checkInventoryTimeout:10 * 1000,
 		verifyMode:this.VERIFY_MODE.SKIP,
-		preferredStoreNames: [ this.STORE_NAME.GOOGLE, this.STORE_NAME.YANDEX ],
-		availableStores: [ [this.STORE_NAME.GOOGLE, 'public_key'] ]
+		storeKeys: [ [this.STORE_NAME.GOOGLE, 'public_key'] ],
+		preferredStoreNames: [ this.STORE_NAME.GOOGLE ],
+        availableStoreNames: [ this.STORE_NAME.GOOGLE, this.STORE_NAME.YANDEX ],
+        storeSearchStrategy: this.STORE_SEARCH_STRATEGY.INSTALLER
 	}
+    
+    this.options.storeKeys
 
 	this.error =
 	{
