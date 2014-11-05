@@ -96,4 +96,10 @@ skuDetails =
     description:'',
     json:''
 }
+
+error =
+{
+    code:-1,
+	message:''
+}
 ```
