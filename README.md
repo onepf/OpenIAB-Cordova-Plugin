@@ -66,3 +66,34 @@ openiab.purchaseProduct(function(purchase){}, function(error){}, SKU1);
 ```
 
 Also consider to check [sample application](https://github.com/GrimReio/OpenIAB-Cordova-sample) for cordova or xdk.
+
+Data Structures
+---------------
+
+```
+purchase =
+{
+    itemType:'',
+    orderId:'',
+    packageName:'',
+    sku:'',
+    purchaseTime:0,
+    purchaseState:0,
+    developerPayload:'',
+    token:'',
+    originalJson:'',
+    signature:'',
+    appstoreName:''
+}
+
+skuDetails =
+{
+  	itemType:'',
+    sku:'',
+    type:'',
+    price:'',
+    title:'',
+    description:'',
+    json:''
+}
+```
