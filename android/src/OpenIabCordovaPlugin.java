@@ -107,6 +107,19 @@ public class OpenIabCordovaPlugin extends CordovaPlugin
             getSkuDetails(sku, callbackContext);
             return true;
         }
+        else if ("getSkuListDetails".equals(action))
+        {
+            List<String> skuList = new ArrayList<String>();
+            if (args.length() > 0) {
+                JSONArray jSkuList = args.getJSONArray(0);
+                int count = jSkuList.length();
+                for (int i = 0; i < count; ++i) {
+                    skuList.add(jSkuList.getString(i));
+                }
+            }       
+            getSkuListDetails(skuList, callbackContext);
+            return true;
+        }
         else if ("mapSku".equals(action))
         {
             String sku = args.getString(0);
@@ -138,6 +151,28 @@ public class OpenIabCordovaPlugin extends CordovaPlugin
             return;
         }
         callbackContext.success(jsonSkuDetails);
+    }
+    
+    private void getSkuListDetails(List<String> skuList, final CallbackContext callbackContext) {
+        if (!checkInitialized(callbackContext)) return;
+
+        JSONArray jsonSkuDetailsList = new JSONArray();
+        for (String sku : skuList) {
+            if (_inventory.hasDetails(sku)) {
+                JSONObject jsonSkuDetails;
+                try {
+                    jsonSkuDetails = Serialization.skuDetailsToJson(_inventory.getSkuDetails(sku));    
+                    jsonSkuDetailsList.put(jsonSkuDetails);
+                } catch (JSONException e) {
+                    callbackContext.error(Serialization.errorToJson(-1, "Couldn't serialize SkuDetails: " + sku));
+                    return;
+                }
+            }
+            else {
+                Log.d(TAG, "SKU NOT FOUND: " + sku);
+            }
+        }
+        callbackContext.success(jsonSkuDetailsList);
     }
 
     private void init(final OpenIabHelper.Options options, final List<String> skuList, final CallbackContext callbackContext) {

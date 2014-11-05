@@ -90,6 +90,11 @@ OpenIAB.prototype.getSkuDetails = function(success, error, sku)
 	exec(success, error, PLUGIN, "getSkuDetails", [sku]);
 }
 
+OpenIAB.prototype.getSkuListDetails = function(success, error, skuList)
+{
+	exec(success, error, PLUGIN, "getSkuListDetails", [skuList]);
+}
+
 OpenIAB.prototype.init = function(success, error, skuList)
 {
 	exec(success, error, PLUGIN, "init", [this.options, skuList]);
