@@ -45,12 +45,14 @@ public class OpenIabCordovaPlugin extends CordovaPlugin
             int discoveryTimeout = j.getInt("discoveryTimeout");
             int verifyMode = j.getInt("verifyMode");
             int storeSearchStrategy = j.getInt("storeSearchStrategy");
+			int samsungCertificationRequestCode = j.getInt("samsungCertificationRequestCode");
 
             OpenIabHelper.Options.Builder builder = new OpenIabHelper.Options.Builder()
                     .setCheckInventory(checkInventory)
                     .setCheckInventoryTimeout(checkInventoryTimeout)
                     .setDiscoveryTimeout(discoveryTimeout)
-                    .setVerifyMode(verifyMode);
+                    .setVerifyMode(verifyMode)
+					.setSamsungCertificationRequestCode(samsungCertificationRequestCode);
 
             builder.setStoreSearchStrategy(storeSearchStrategy);
                     

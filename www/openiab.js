@@ -42,7 +42,8 @@ function OpenIAB()
 		storeKeys: [ [this.STORE_NAME.GOOGLE, 'public_key'] ],
 		preferredStoreNames: [ this.STORE_NAME.GOOGLE ],
         availableStoreNames: [ this.STORE_NAME.GOOGLE, this.STORE_NAME.YANDEX ],
-        storeSearchStrategy: this.STORE_SEARCH_STRATEGY.INSTALLER
+        storeSearchStrategy: this.STORE_SEARCH_STRATEGY.INSTALLER,
+		samsungCertificationRequestCode: 0
 	}
     
     this.options.storeKeys
