@@ -51,8 +51,10 @@ public class OpenIabCordovaPlugin extends CordovaPlugin
                     .setCheckInventory(checkInventory)
                     .setCheckInventoryTimeout(checkInventoryTimeout)
                     .setDiscoveryTimeout(discoveryTimeout)
-                    .setVerifyMode(verifyMode)
-					.setSamsungCertificationRequestCode(samsungCertificationRequestCode);
+                    .setVerifyMode(verifyMode);
+            
+            if (samsungCertificationRequestCode > 0)
+					builder.setSamsungCertificationRequestCode(samsungCertificationRequestCode);
 
             builder.setStoreSearchStrategy(storeSearchStrategy);
                     
