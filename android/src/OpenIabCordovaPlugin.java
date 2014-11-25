@@ -127,6 +127,7 @@ public class OpenIabCordovaPlugin extends CordovaPlugin
         else if ("getPurchases".equals(action))
         {
             getPurchases(callbackContext);
+            return true;
         }
         else if ("mapSku".equals(action))
         {
