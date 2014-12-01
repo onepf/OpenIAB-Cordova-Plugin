@@ -52,11 +52,32 @@ openiab.mapSku(function(){}, function(error){}, SKU1, openiab.STORE_NAME.GOOGLE,
 ```
 
 b) Set some options.
+
+Set store search strategy.
 ```
-openiab.options.storeKeys = [ [openiab.STORE_NAME.GOOGLE, 'your public key'] ];
-openiab.options.availableStoreNames = [ openiab.STORE_NAME.GOOGLE, openiab.STORE_NAME.YANDEX ];
 openiab.options.storeSearchStrategy = openiab.STORE_SEARCH_STRATEGY.INSTALLER_THEN_BEST_FIT;
 ```
+
+Set available stores to restrict the set of stores to check.
+```
+openiab.options.availableStoreNames = [ openiab.STORE_NAME.GOOGLE, openiab.STORE_NAME.YANDEX ];
+```
+
+Set preferred store names (works only for store search strategy ```OpenIabHelper.Options.SEARCH_STRATEGY_BEST_FIT``` and ```OpenIabHelper.Options.SEARCH_STRATEGY_INSTALLER_THEN_BEST_FIT```).
+```
+openiab.options.preferredStoreNames = [ openiab.STORE_NAME.GOOGLE, openiab.STORE_NAME.YANDEX ];
+```
+
+Set store keys.
+```
+openiab.options.storeKeys = [ [openiab.STORE_NAME.GOOGLE, 'your public key'] ];
+```
+
+Set verifying mode (applicable only for Google Play, Appland, Aptoide, AppMall, SlideMe, Yandex.Store).
+```
+openiab.options.verifyMode = openiab.VERIFY_MODE.SKIP;
+```
+
 
 c) Initialize plugin.
 ```
