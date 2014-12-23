@@ -54,7 +54,7 @@
 
         <!-- Libraries -->
         <source-file src="android/libs/OpenIAB.jar" target-dir="libs" />
-        <source-file src="android/libs/in-app-purchasing-2.0.0.jar" target-dir="libs" />
+        <source-file src="android/libs/in-app-purchasing-2.0.1.jar" target-dir="libs" />
         <source-file src="android/libs/FortumoInApp-android-9.1.2-o.jar" target-dir="libs" />        
 
     </platform>
